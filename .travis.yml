@@ -13,4 +13,9 @@ after_success:
   - docker build -t yvalain/multi-nginx -f ./nginx
   - docker build -t yvalain/multi-server -f ./server
   - docker build -t yvalain/multi-worker -f ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push yvalain/multi-client
+  - docker push yvalain/multi-nginx
+  - docker push yvalain/multi-server
+  - docker push yvalain/multi-worker
   
